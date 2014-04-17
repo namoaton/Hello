@@ -3,9 +3,10 @@
 import smtplib as s
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
+import getpass
 
 user  = raw_input('Enter you email     : ')
-passw = raw_input('Enter your password : ')
+passw = getpass.getpass('Enter your password : ')
 
 receiver = raw_input('Enter the reciever`s email : ')
 
@@ -14,7 +15,8 @@ msg['From'] = user
 msg['To'] = receiver
 msg['Subject'] = "Python email"
 
-body = "Python test mail"
+body = raw_input('Enter the message : ')
+
 msg.attach(MIMEText(body, 'plain'))
 
 text = msg.as_string()
